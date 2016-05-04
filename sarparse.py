@@ -38,7 +38,7 @@ def parse_sar_cpu(filename):
             continue
         if n < 3:                       # skip headers
             continue
-        if not line or line.startswith('Average'):  # skip footer and blank lines
+        if line.startswith('Average'):  # skip footer and blank lines
             continue
 
         line = line.strip().split()
