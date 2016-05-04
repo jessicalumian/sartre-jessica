@@ -1,0 +1,13 @@
+mkdir true-files
+mv *.txt.gz true-files
+gunzip disk.txt.gz
+cp disk.txt disk.txt-all
+
+rm disk.txt.gz && head -8660 disk.txt-all > disk.txt | gzip disk.txt
+./extract.py
+
+## line 8644 is disk.txt is blank, breaks code
+## line 8645 is DEV line
+
+
+rm disk.txt.gz && head -8644 disk.txt-all > disk.txt && gzip disk.txt

@@ -1,0 +1,7 @@
+*~
+*.pyc
+log.out
+.ipynb_checkpoints
+numa/hpc.txt
+times.*
+*.txt.gz
