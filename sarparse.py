@@ -34,7 +34,7 @@ def parse_sar_cpu(filename):
                      'psteal pidle')
     
     for n, line in enumerate(gzip.open(filename)):
-        if not line:                    # skip blank lines
+        if not line.strip():            # skip blank lines
             continue
         if n < 3:                       # skip headers
             continue
@@ -64,7 +64,7 @@ def parse_sar_ram(filename):
                      'kbbuffers kbcached kbcommit pcommit kbactive kbinact')
     
     for n, line in enumerate(gzip.open(filename)):
-        if not line:                    # skip blank lines
+        if not line.strip():            # skip blank lines
             continue	
         if n < 3:                       # skip header
             continue
@@ -100,7 +100,7 @@ def parse_sar_disk(filename, device):
 
         line = line.strip().split()
 
-        if not line or line[2] != device:           # pick out a particular device?
+        if not line.strip() or line[2] != device:    # pick out a particular device?
             continue
         
         assert len(line) == 11, len(line)
