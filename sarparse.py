@@ -70,6 +70,8 @@ def parse_sar_ram(filename):
             continue
         if line.startswith('Average'):  # skip footer and blank lines
             continue
+        if "kbmemfree" in line:         # skip reintroduced headers
+            continue
 
         line = line.strip().split()
         assert len(line) >= 11, len(line)
