@@ -101,12 +101,14 @@ def parse_sar_disk(filename, device):
             continue
         if line.startswith('Average'):  # skip footers
             continue
+        if not line.strip():            # skip empty lines
+            continue
 
         line = line.strip().split()
 
-        if not line.strip() or line[2] != device:    # pick out a particular device?
+        if line[2] != device:    # pick out a particular device?
             continue
-        
+ 
         assert len(line) == 11, len(line)
         line2 = [line[0] + ' ' + line[1], line[2]]
         line2.extend(( float(x) for x in line[3:]))
