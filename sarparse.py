@@ -40,6 +40,8 @@ def parse_sar_cpu(filename):
             continue
         if line.startswith('Average'):  # skip footer and blank lines
             continue
+        if "%user" in line:             # skip reintroduced headers
+            continue
 
         line = line.strip().split()
         assert len(line) == 9, len(line)
